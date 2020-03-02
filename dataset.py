@@ -24,7 +24,7 @@ def load_remu():
     return load(remu_path, remu_categories)
 
 def load(path, cats):
-    df = pd.read_csv(path, sep=';', encoding='utf-8')
+    df = pd.read_csv(path, sep=';', encoding='utf-8', low_memory=False)
     for cat in cats:
         df[cat].astype('category')
     return df
