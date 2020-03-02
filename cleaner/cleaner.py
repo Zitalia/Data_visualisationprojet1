@@ -26,9 +26,18 @@ def clean(from_path, to_path, sep, to_dels):
 
 ''' REMU '''
 
+# clean(
+#   "data/remu.csv",
+#   "data/clean/remu_clean.csv",
+#   ';',
+#   ['ligne_type', 'categorie', 'qualite', 'pays', 'benef_titre_libelle', 'benef_speicalite_libelle', 'identifiant_type']   
+# )
+
+''' ENTR '''
+
 clean(
-  "data/remu.csv",
-  "data/clean/remu_clean.csv",
-  ';',
-  ['ligne_type', 'categorie', 'qualite', 'pays', 'benef_titre_libelle', 'benef_speicalite_libelle', 'identifiant_type']   
+  "data/entreprise.csv",
+  "data/clean/entreprise_clean.csv",
+  ',',
+  ['pays', 'secteur']   
 )

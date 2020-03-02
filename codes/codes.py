@@ -350,8 +350,44 @@ remu = {
        'identifiant':(
               ['[AUTRE]', '[RPPS]', '[SIREN]', '[ORDRE]', '[FINESS]'],
               ['AUTRE', 'RPPS', 'SIREN', 'ORDRE', 'FINESS']
+       )}
+entr = {
+       'pays' : (
+              ['[FR]', '[US]', '[CN]', '[NL]', '[JP]', '[SE]', '[GB]', '[IT]',
+              '[DE]', '[CH]', '[RE]', '[ZA]', '[LB]', '[AE]', '[MA]', '[IE]',
+              '[MC]', '[RU]', '[AT]', '[ES]', '[BE]', '[AU]', '[DK]', '[MX]',
+              '[PT]', '[IL]', '[LU]', '[CZ]', '[CA]', '[FI]', '[GP]', '[GY]',
+              '[MQ]', '[HK]', '[MY]', '[PL]', '[AR]', '[TR]', '[KR]', '[GR]',
+              '[NO]', '[BR]', '[HU]', '[SG]', '[IS]', '[DZ]', '[BG]', '[RO]',
+              '[SA]', '[SI]', '[IN]', '[MK]', '[ME]', '[TW]', '[CI]', '[LT]',
+              '[TN]', '[GF]', '[TH]', '[CO]', '[BY]', '[KP]', '[EE]', '[KZ]',
+              '[NZ]'],
+              ['FRANCE', 'ÉTATS-UNIS', 'CHINE', 'PAYS-BAS', 'JAPON', 'SUÈDE',
+              'ROYAUME-UNI', 'ITALIE', 'ALLEMAGNE', 'SUISSE', 'RÉUNION',
+              'AFRIQUE DU SUD', 'LIBAN', 'ÉMIRATS ARABES UNIS', 'MAROC',
+              'IRLANDE', 'MONACO', 'RUSSIE, FÉDÉRATION DE', 'AUTRICHE',
+              'ESPAGNE', 'BELGIQUE', 'AUSTRALIE', 'DANEMARK', 'MEXIQUE',
+              'PORTUGAL', 'ISRAËL', 'LUXEMBOURG', 'TCHÈQUE, RÉPUBLIQUE',
+              'CANADA', 'FINLANDE', 'GUADELOUPE', 'GUYANA', 'MARTINIQUE',
+              'HONG KONG', 'MALAISIE', 'POLOGNE', 'ARGENTINE', 'TURQUIE',
+              'CORÉE, RÉPUBLIQUE DE', 'GRÈCE', 'NORVÈGE', 'BRÉSIL', 'HONGRIE',
+              'SINGAPOUR', 'ISLANDE', 'ALGÉRIE', 'BULGARIE', 'ROUMANIE',
+              'ARABIE SAOUDITE', 'SLOVÉNIE', 'INDE',
+              "MACÉDOINE, L'EX-RÉPUBLIQUE YOUGOSLAVE DE", 'MONTÉNÉGRO',
+              'TAÏWAN, PROVINCE DE CHINE', "CÔTE D'IVOIRE", 'LITUANIE',
+              'TUNISIE', 'GUYANE FRANÇAISE', 'THAÏLANDE', 'COLOMBIE', 'BÉLARUS',
+              'CORÉE, RÉPUBLIQUE POPULAIRE DÉMOCRATIQUE DE', 'ESTONIE',
+              'KAZAKHSTAN', 'NOUVELLE-ZÉLANDE']
+       ),
+       'secteur': (
+              ['[PA]', '[DM]', '[AUT]', '[MED]', '[DMDIV]', '[PC]', '[MV]'],
+              ['Prestataires associés', 'Dispositifs médicaux', 'Autres',
+              'Médicaments humains',
+              'Dispositifs médicaux de diagnostic in vitro',
+              'Produits cosmétiques', 'Médicament vétérinaire']
        )
 }
+
 
 codes = {}
 
@@ -369,7 +405,8 @@ def make_codes(data):
 make_codes(conv)
 make_codes(benef)
 make_codes(remu)
+make_codes(entr)
 
 import json
-with open('codes.json', 'w', encoding='utf-8') as f:
+with open('codes/codes.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(codes))
