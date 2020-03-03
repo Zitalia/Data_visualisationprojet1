@@ -1,11 +1,11 @@
 import sys, os
 import pandas as pd
 
-remu_path = 'data/clean/remu.csv'
+remu_path = 'data/clean/remu_clean.csv'
 remu_categories = ['ligne_rectification', 'benef_categorie_code', 'benef_qualite_code', 'benef_pays_code', 
     'benef_titre_code', 'benef_specialite_code', 'benef_identifiant_type_code']
 
-conv_path = 'data/clean/conv.csv'
+conv_path = 'data/clean/conv_clean.csv'
 conv_categories = ['ligne_rectification', 'benef_categorie_code', 'benef_qualite_code', 'benef_pays_code', 
     'benef_titre_code', 'benef_specialite_code', 'benef_identifiant_type_code', 'conv_objet']
 
