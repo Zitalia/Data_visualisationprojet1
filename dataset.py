@@ -36,5 +36,5 @@ def load_entr():
 def load(path, cats, sep=';'):
     df = pd.read_csv(path, sep=sep, encoding='utf-8', low_memory=False)
     for cat in cats:
-        df[cat].astype('category')
+        df[cat] = df[cat].astype('category')
     return df
