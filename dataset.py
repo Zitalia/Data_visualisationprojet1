@@ -22,32 +22,27 @@ entr_categories = [
 
 def load_short_entr():
     cols = ['pays_code', 'secteur_activite_code']
-    df_entr = pd.read_csv(
-        'data/clean/entreprise_clean.csv', sep=',', 
-        encoding='utf-8', low_memory=False, 
-        usecols = cols + ['identifiant'])
+    df = pd.read_csv(
+        'data/entr_short.csv', sep=',', 
+        encoding='utf-8', low_memory=False)
 
     for col in cols:
-        df_entr[col] = df_entr[col].astype('category')
+        df[col] = df[col].astype('category')
 
-    df_remu =  pd.read_csv(
-        'data/clean/remu_clean.csv', sep=';', 
-        encoding='utf-8', low_memory=False, 
-        usecols=['entreprise_identifiant', 'remu_montant_ttc', 'remu_date'])
-    helpers.parse_dates(df_remu, 'remu_date')
+    df['remu_date'] = pd.to_datetime(df['remu_date'], format='%Y-%m-%d')
 
-    return df_remu.set_index('entreprise_identifiant').join(df_entr.set_index('identifiant'))    
+    return df
 
 def load_short_remu():
     cols = ['benef_categorie_code', 'benef_pays_code', 'benef_identifiant_type_code', 'benef_titre_code', 'benef_specialite_code']
     df = pd.read_csv(
-        'data/clean/remu_clean.csv', sep=';', 
-        encoding='utf-8', low_memory=False, 
-        usecols=cols + ['remu_montant_ttc', 'remu_date'])
+        'data/remu_short.csv', sep=';', 
+        encoding='utf-8', low_memory=False)
 
     for col in cols:
         df[col] = df[col].astype('category')
-    helpers.parse_dates(df, 'remu_date')
+        
+    df['remu_date'] = pd.to_datetime(df['remu_date'], format='%Y-%m-%d')
     return df
     
 def load_all():

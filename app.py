@@ -46,7 +46,6 @@ dfs = [
     df_entr
 ]
 
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -168,12 +167,37 @@ app.layout = html.Div([
             html.Br(),
             dcc.Graph(
                 figure= getplot.get_montant_by_pays(df_remu)),
+        ]),
+        dcc.Tab(label='Infos', children=[
+            html.Br(),
+            html.Br(),
+            html.Div(children=[
+                html.Div(children=[
+                    html.P(['Bénéficiaire :']),
+                    html.P(['---- Catégorie    : 100% non null']),
+                    html.P(['---- Pays         : 99.9% non null']),
+                    html.P(['---- Titre        : 36.1% non null']),
+                    html.P(['---- Spécialité   : 38.8%% non null']),
+                    html.P(['---- Identifiant  : 100% non null'])],
+                    className='three columns'
+                ),
+                html.Div(children=[
+                    html.P(['Rémunération :']),
+                    html.P(['---- Date    : 100% non null']),
+                    html.P(['---- Montant : 100% non null'])],
+                    className='three columns'
+                ),
+                html.Div(children=[
+                    html.P(['Entreprise :']),
+                    html.P(['---- Pays    : 100% non null']),
+                    html.P(['---- Secteur : 100% non null'])],
+                    className='three columns'
+                )],
+                className='row flex-display'
+            ),
         ])
     ])
 ])
-
-
-
 
 ''' HISTO LEFT CALLBACKS'''
 
