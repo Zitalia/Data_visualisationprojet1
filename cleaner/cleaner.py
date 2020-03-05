@@ -35,9 +35,9 @@ def clean(from_path, to_path, sep, to_dels):
 
 ''' ENTR '''
 
-clean(
-  "data/entreprise.csv",
-  "data/clean/entreprise_clean.csv",
-  ',',
-  ['pays', 'secteur']   
-)
+# clean(
+#   "data/entreprise.csv",
+#   "data/clean/entreprise_clean.csv",
+#   ',',
+#   ['pays', 'secteur']   
+# )

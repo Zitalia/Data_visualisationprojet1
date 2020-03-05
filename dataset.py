@@ -1,5 +1,6 @@
 import sys, os
 import pandas as pd
+import helpers
 
 remu_path = 'data/clean/remu_clean.csv'
 remu_categories = ['ligne_rectification', 'benef_categorie_code', 'benef_qualite_code', 'benef_pays_code', 
@@ -17,7 +18,38 @@ entr_path = 'data/clean/entreprise_clean.csv'
 entr_categories = [
     'pays_code', 'secteur_activite_code'
 ]
+# ['benef_categorie_code', 'benef_pays_code', 'benef_identifiant_type_code', 'benef_titre_code', 'benef_specialite_code']
 
+def load_short_entr():
+    cols = ['pays_code', 'secteur_activite_code']
+    df_entr = pd.read_csv(
+        'data/clean/entreprise_clean.csv', sep=',', 
+        encoding='utf-8', low_memory=False, 
+        usecols = cols + ['identifiant'])
+
+    for col in cols:
+        df_entr[col] = df_entr[col].astype('category')
+
+    df_remu =  pd.read_csv(
+        'data/clean/remu_clean.csv', sep=';', 
+        encoding='utf-8', low_memory=False, 
+        usecols=['entreprise_identifiant', 'remu_montant_ttc', 'remu_date'])
+    helpers.parse_dates(df_remu, 'remu_date')
+
+    return df_remu.set_index('entreprise_identifiant').join(df_entr.set_index('identifiant'))    
+
+def load_short_remu():
+    cols = ['benef_categorie_code', 'benef_pays_code', 'benef_identifiant_type_code', 'benef_titre_code', 'benef_specialite_code']
+    df = pd.read_csv(
+        'data/clean/remu_clean.csv', sep=';', 
+        encoding='utf-8', low_memory=False, 
+        usecols=cols + ['remu_montant_ttc', 'remu_date'])
+
+    for col in cols:
+        df[col] = df[col].astype('category')
+    helpers.parse_dates(df, 'remu_date')
+    return df
+    
 def load_all():
     return (load_benef(), load_conv(), load_remu(), load_entr())
 
