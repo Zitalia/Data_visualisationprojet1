@@ -2,7 +2,6 @@
  ```
  Dino Brignoli
  Pierre Epron
- Jean Guillaume
  ```
 # install
   ```
