@@ -1,2 +1,8 @@
-# data_viz
-Projet simplon sur 3 jours
+# install
+  ```
+    pip install -r requirements.txt
+  ```
+# run dash
+  ```
+    python app.py
+  ```
