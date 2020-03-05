@@ -8,6 +8,7 @@ import pandas as pd
 
 import dataset as ds
 import helpers
+import getplot
 
 # ['benef_categorie_code', 'benef_pays_code', 'benef_identifiant_type_code', 'benef_titre_code', 'benef_specialite_code']
 
@@ -50,7 +51,12 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
+    html.Br(),
+    html.Br(),
     html.H1(children='Les revenus des entreprises et partenaires de la santé'),
+    html.A(children=['Rapport'], href='https://docs.google.com/document/d/1PCWeUZ-qySD9mGjVfZhZ09Zx85vseR-PKRsAhVhFqP0/edit?usp=sharing'),
+    html.Br(),
+    html.Br(),
     dcc.Tabs([
         dcc.Tab(label='Résultats', children=[
             html.Br(),
@@ -148,16 +154,20 @@ app.layout = html.Div([
             )
         ]),
         dcc.Tab(label='Progression', children=[
+            html.Br(),
+            html.Br(),
             dcc.Graph(
-                figure={
-                    'data': [
-                        {'x': [1, 2, 3], 'y': [1, 4, 1],
-                            'type': 'bar', 'name': 'SF'},
-                        {'x': [1, 2, 3], 'y': [1, 2, 3],
-                            'type': 'bar', 'name': u'Montréal'},
-                    ]
-                }
-            )
+                figure= getplot.getmontantfig(df_remu)),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            dcc.Graph(
+                figure= getplot.gethistomontant(df_remu)),
+            html.Br(),
+            html.Br(),
+            html.Br(),
+            dcc.Graph(
+                figure= getplot.get_montant_by_pays(df_remu)),
         ])
     ])
 ])
